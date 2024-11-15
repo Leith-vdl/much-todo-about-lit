@@ -2,7 +2,7 @@ import { html, css, LitElement } from 'lit';
 import './task-list.js'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-//defines a new class (TodoApp) which is a custom web component
+//defines a new class (TodoApp) which is a custom web compoent
 class TodoApp extends LitElement {
 
   //define the components properties: a string to hold the task name and an array for the list of tasks 
