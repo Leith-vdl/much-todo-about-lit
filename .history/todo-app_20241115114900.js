@@ -11,7 +11,7 @@ class TodoApp extends LitElement {
     tasks: { type: Array }
   };
 
-  //called when a new instance of the web TodoApp is created
+  //is called when a new instance of the web TodoApp is created
   constructor() {
     super();
     this.newTaskText = '';
@@ -34,7 +34,7 @@ class TodoApp extends LitElement {
   //returns HTML template literal to be rendered
   render() {
     return html`
-      <h1 class="text-center mb-4">To-Do List</h1>
+      <h1 class="text-center mb-4">Todo List</h1>
 
       <div class="mb-3">
         <input

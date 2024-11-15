@@ -1,28 +1,28 @@
 import { html, css, LitElement } from 'lit';
 
-//defines an object that will hold the data for a single task
+// Defines an object that will hold the data for a single task
 class TaskItem extends LitElement {
   static properties = {
     task: { type: Object }
   };
 
-  //initializes the TaskItem with an empty description and a false completed boolean value
+  // Initializes the TaskItem with an empty description and a false completed boolean value
   constructor() {
     super();
     this.task = { text: '', completed: false };
   }
 
-  //handles toggling completion of task, uses 'composed' and 'bubbles' to pass through DOM and Shadow DOM and allows parents to listen
+  // Handles toggling completion of task, uses 'composed' and 'bubbles' to pass through DOM and Shadow DOM and allows parents to listen
   toggleComplete() {
     this.dispatchEvent(new CustomEvent('toggle-complete', { detail: this.task, bubbles: true, composed: true }));
   }
 
-  //same as above but handles deletion of tasks
+  // Same as above but handles deletion of tasks
   deleteTask() {
     this.dispatchEvent(new CustomEvent('delete-task', { detail: this.task, bubbles: true, composed: true }));
   }
 
-  //renders HTML using template literal
+  // Renders HTML using template literal
   render() {
     return html`
       <div class="d-flex align-items-center justify-content-between">

@@ -2,28 +2,28 @@ import { html, css, LitElement } from 'lit';
 import './task-list.js'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-//defines a new class (TodoApp) which is a custom web component
+// Defines a new class (TodoApp) which is a custom web component
 class TodoApp extends LitElement {
 
-  //define the components properties: a string to hold the task name and an array for the list of tasks 
+  // Define the components properties: a string to hold the task name and an array for the list of tasks 
   static properties = {
     newTaskText: { type: String },
     tasks: { type: Array }
   };
 
-  //called when a new instance of the web TodoApp is created
+  // Called when a new instance of the web TodoApp is created
   constructor() {
     super();
     this.newTaskText = '';
     this.tasks = [];
   }
 
-  //listens for input of a new task being written then re-renders the component with the new text
+  // Listens for input of a new task being written then re-renders the component with the new text
   handleInputChange(event) {
     this.newTaskText = event.target.value;
   }
 
-  //checks text input and trims whitespace, then copies existing list of tasks and adds the new one to it, finally resets the input field 
+  // Checks text input and trims whitespace, then copies existing list of tasks and adds the new one to it, finally resets the input field 
   addTask() {
     if (this.newTaskText.trim() !== '') {
       this.tasks = [...this.tasks, { text: this.newTaskText, completed: false }];
@@ -31,10 +31,10 @@ class TodoApp extends LitElement {
     }
   }
 
-  //returns HTML template literal to be rendered
+  // Returns HTML template literal to be rendered
   render() {
     return html`
-      <h1 class="text-center mb-4">To-Do List</h1>
+      <h1 class="text-center mb-4">Todo List</h1>
 
       <div class="mb-3">
         <input
@@ -52,5 +52,5 @@ class TodoApp extends LitElement {
   }
 }
 
-//registers TodoApp as a custom tag
+// Registers TodoApp as a custom tag
 customElements.define('todo-app', TodoApp);
