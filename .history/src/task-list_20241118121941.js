@@ -1,21 +1,21 @@
 //This component receives the tasks from todo-app and renders them as a list. It also handles task completion and deletion.
 
-import { html, css, LitElement } from 'lit';
+import { html, render, LitElement } from 'lit';
 import './task-item.js';
 
-// Defines the TaskList component
+//the array that holds thge list of tasks passed from the parent component
 class TaskList extends LitElement {
   static properties = {
     tasks: { type: Array }
   };
 
-  // Initializes the tasks array as an empty array
+  //initializes tasks as an empty array
   constructor() {
     super();
     this.tasks = [];
   }
 
-  // Handles the task completion toggle
+  // when text is clicked checks the task against the list, then toggles the completion state of the task
   handleToggleComplete(event) {
     const updatedTask = event.detail;
     this.tasks = this.tasks.map(task => 
@@ -23,19 +23,18 @@ class TaskList extends LitElement {
     );
   }
 
-  // Handles task deletion
+  //removes task from the list when event (button) is triggered, "X"
   handleDeleteTask(event) {
     const taskToDelete = event.detail;
     this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);
   }
 
-  // Renders the task list
+  //renders the task list
   render() {
     return html`
-      <!-- List of tasks -->
       <ul class="list-group">
         ${this.tasks.map(task => html`
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item">
             <task-item .task="${task}" 
                        @toggle-complete="${this.handleToggleComplete}"
                        @delete-task="${this.handleDeleteTask}">
@@ -47,6 +46,5 @@ class TaskList extends LitElement {
   }
 }
 
-// Registers TaskList as a custom HTML element (tag)
+///registers the TaskList class as a custom element using the provided tag
 customElements.define('task-list', TaskList);
-
