@@ -1,6 +1,9 @@
 //This is the main component where the user interacts with the app. It allows the user to enter a new task, and it manages the list of tasks
 
+//import { html, css, LitElement } from 'lit';
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+
 import './task-list.js'; 
 
 // Defines the TodoApp component

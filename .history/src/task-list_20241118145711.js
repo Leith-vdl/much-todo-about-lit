@@ -2,11 +2,13 @@
 
 // import { html, css, LitElement } from 'lit';
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
-
 import './task-item.js';
 
 // Defines the TaskList component
 class TaskList extends LitElement {
+  static styles = [
+    css`:host(ul){ background-color: red;}`
+  ]
 
   static properties = {
     tasks: { type: Array }

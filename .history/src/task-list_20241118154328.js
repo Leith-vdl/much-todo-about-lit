@@ -2,12 +2,11 @@
 
 // import { html, css, LitElement } from 'lit';
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
-
 import './task-item.js';
 
 // Defines the TaskList component
 class TaskList extends LitElement {
-
+  
   static properties = {
     tasks: { type: Array }
   };
@@ -24,6 +23,14 @@ class TaskList extends LitElement {
     this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);
   }
 
+  // Handles task completion toggle
+  handleToggleComplete(event) {
+    const updatedTask = event.detail;
+    this.tasks = this.tasks.map(task =>
+      task.text === updatedTask.text ? updatedTask : task
+    );
+  }
+
   // Renders the task list
   render() {
     return html`
@@ -35,8 +42,7 @@ class TaskList extends LitElement {
                        @toggle-complete="${this.handleToggleComplete}"
                        @delete-task="${this.handleDeleteTask}">
             </task-item>
-          </li>`
-        )}
+          </li>`)}
       </ul>
     `;
   }

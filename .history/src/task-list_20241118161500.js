@@ -1,8 +1,5 @@
-//This component receives the tasks from todo-app and renders them as a list. It also handles task completion and deletion.
-
-// import { html, css, LitElement } from 'lit';
-import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
-
+import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './task-item.js';
 
 // Defines the TaskList component
@@ -35,8 +32,8 @@ class TaskList extends LitElement {
                        @toggle-complete="${this.handleToggleComplete}"
                        @delete-task="${this.handleDeleteTask}">
             </task-item>
-          </li>`
-        )}
+          </li>
+        `)}
       </ul>
     `;
   }
@@ -44,4 +41,5 @@ class TaskList extends LitElement {
 
 // Registers TaskList as a custom HTML element (tag)
 customElements.define('task-list', TaskList);
+
 

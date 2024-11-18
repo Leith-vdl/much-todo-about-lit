@@ -27,7 +27,7 @@ class TaskItem extends LitElement {
   // Toggles the completion status of the task
   toggleCompleteTask() {
     this.task.completed = !this.task.completed;
-    this.requestUpdate();
+    this.requestUpdate(); // Ensure re-render happens
   }
 
   // Renders the task item layout
@@ -55,6 +55,44 @@ class TaskItem extends LitElement {
       </div>
     `;
   }
+
+  // Optional: Styles specific to the TaskItem component
+  static styles = css`
+    .task-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* Apply line-through when task is completed */
+    .task-item .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .btn {
+      cursor: pointer;
+    }
+
+    .btn-sm {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+  `;
 }
 
 // Registers TaskItem as a custom HTML element (tag)

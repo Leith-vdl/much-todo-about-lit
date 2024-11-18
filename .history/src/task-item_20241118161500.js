@@ -1,7 +1,6 @@
-//This represents an individual task. It displays the task text and provides functionality to toggle its completion or delete it.
-
 // Import necessary modules from LitElement
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 // Defines the TaskItem component
 class TaskItem extends LitElement {

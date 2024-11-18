@@ -27,7 +27,7 @@ class TaskItem extends LitElement {
   // Toggles the completion status of the task
   toggleCompleteTask() {
     this.task.completed = !this.task.completed;
-    this.requestUpdate();
+    this.requestUpdate(); // Ensure re-render happens
   }
 
   // Renders the task item layout

@@ -1,13 +1,10 @@
 //This component receives the tasks from todo-app and renders them as a list. It also handles task completion and deletion.
 
-// import { html, css, LitElement } from 'lit';
-import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
-
+import { html, css, LitElement } from 'lit';
 import './task-item.js';
 
 // Defines the TaskList component
 class TaskList extends LitElement {
-
   static properties = {
     tasks: { type: Array }
   };

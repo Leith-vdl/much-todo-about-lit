@@ -2,6 +2,7 @@
 
 // Import necessary modules from LitElement
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
 
 // Defines the TaskItem component
 class TaskItem extends LitElement {
@@ -33,6 +34,8 @@ class TaskItem extends LitElement {
   // Renders the task item layout
   render() {
     return html`
+    import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+
       <div class="task-item">
         <!-- Task completion toggle button -->
         <button 

@@ -24,10 +24,14 @@ class TaskItem extends LitElement {
     }));
   }
 
-  // Toggles the completion status of the task
+  // Toggles the completion status of the task and dispatches an event with the updated task
   toggleCompleteTask() {
     this.task.completed = !this.task.completed;
-    this.requestUpdate();
+    this.dispatchEvent(new CustomEvent('toggle-complete', {
+      detail: this.task,
+      bubbles: true,
+      composed: true
+    }));
   }
 
   // Renders the task item layout
@@ -55,6 +59,13 @@ class TaskItem extends LitElement {
       </div>
     `;
   }
+
+  static styles = css`
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  `;
 }
 
 // Registers TaskItem as a custom HTML element (tag)
