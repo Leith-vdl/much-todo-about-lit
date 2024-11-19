@@ -32,9 +32,9 @@ class TaskItem extends LitElement {
     this.requestUpdate();
   }
 
-  // Disable Shadow DOM for this component, using light DOM instead
+  // Disable Shadow DOM for this component
   createRenderRoot() {
-    return this;
+    return this; // Use Light DOM instead of Shadow DOM
   }
 
   // Render the task item layout using Lit's HTML template, with completion class toggle and deletion

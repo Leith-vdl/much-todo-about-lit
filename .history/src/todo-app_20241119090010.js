@@ -32,11 +32,6 @@ class TodoApp extends LitElement {
     }
   }
 
-  // Disable Shadow DOM for this component
-  createRenderRoot() {
-    return this; // Use Light DOM instead of Shadow DOM
-  }
-
   // Renders the component using string literals, setting the layout, listening for inpout, adding add/delete buttons
   render() {
     return html`

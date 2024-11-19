@@ -1,6 +1,7 @@
 //This component receives the tasks from todo-app and renders them as a list. It also handles task completion and deletion.
 
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
 import './task-item.js';
 
 // Defines the TaskList component responsible for displaying the array of all tasks
@@ -21,11 +22,6 @@ class TaskList extends LitElement {
   handleDeleteTask(event) {
     const taskToDelete = event.detail;  // Get the task data from the event
     this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);  // Filter out the deleted task
-  }
-
-  // Disable Shadow DOM for this component
-  createRenderRoot() {
-    return this; // Use Light DOM instead of Shadow DOM
   }
 
   // defiens the structure of the TaskList mappping over each task in the tasks array and rendering a TaskItem for each, listens for complete/delete

@@ -32,9 +32,9 @@ class TaskItem extends LitElement {
     this.requestUpdate();
   }
 
-  // Disable Shadow DOM for this component, using light DOM instead
+  // Disable Shadow DOM for this component
   createRenderRoot() {
-    return this;
+    return this; // Use Light DOM instead of Shadow DOM
   }
 
   // Render the task item layout using Lit's HTML template, with completion class toggle and deletion
@@ -45,7 +45,7 @@ class TaskItem extends LitElement {
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
-          ${this.task.completed ? '↩️' : '✅'}  
+          ${this.task.completed ? 'Undo' : '✅'}  
         </button>
 
         <!-- adds the completed class to tasks when button is clicked -->
@@ -56,7 +56,7 @@ class TaskItem extends LitElement {
         <button 
           class="btn btn-danger btn-sm" 
           @click="${this.deleteTask}">
-          ✘  
+          ❌  
         </button>
       </div>
     `;
@@ -67,7 +67,6 @@ class TaskItem extends LitElement {
     .completed {
       text-decoration: line-through;  
       color: #6c757d;  
-      padding: 10px;
     }
   `;
 }
