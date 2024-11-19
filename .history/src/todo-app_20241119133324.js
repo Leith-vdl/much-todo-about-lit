@@ -43,7 +43,6 @@ class TodoApp extends LitElement {
     return this; 
   }
 
-  // logic for dark mode toggle button
   toggleDarkMode() {
     document.body.classList.toggle('bg-dark');
     document.body.classList.toggle('text-light');
@@ -69,7 +68,8 @@ class TodoApp extends LitElement {
 
         <task-list .tasks="${this.tasks}"></task-list>
         <br>
-   
+        <br>
+        
         <button class="btn btn-secondary" @click="${this.toggleDarkMode}">Toggle Dark Mode</button>
 
       </div>

@@ -69,7 +69,8 @@ class TodoApp extends LitElement {
 
         <task-list .tasks="${this.tasks}"></task-list>
         <br>
-   
+        <br>
+
         <button class="btn btn-secondary" @click="${this.toggleDarkMode}">Toggle Dark Mode</button>
 
       </div>
