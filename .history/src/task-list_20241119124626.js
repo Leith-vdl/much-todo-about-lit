@@ -49,6 +49,7 @@ class TaskList extends LitElement {
           
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <task-item .task="${task}"  
+                       @keydown="${this.addTask}"
                        @toggle-complete="${this.handleToggleComplete}" 
                        @delete-task="${this.handleDeleteTask}"> 
             </task-item>

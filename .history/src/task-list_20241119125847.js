@@ -17,18 +17,6 @@ class TaskList extends LitElement {
     this.tasks = [];
   }
 
-  // Adds a task when the Enter key is pressed, then clears the input field
-  addTask(event) {
-    if (KeyboardEvent === 'Enter' && event.target.value.trim() !== '') {
-      const newTask = {
-        text: event.target.value,
-        completed: false
-      };
-      this.tasks = [...this.tasks, newTask]; 
-      event.target.value = ''; 
-    }
-  }
-
   // removes the selected task from the tasks array
   handleDeleteTask(event) {
     const taskToDelete = event.detail;  

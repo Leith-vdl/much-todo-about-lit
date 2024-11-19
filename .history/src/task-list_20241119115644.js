@@ -31,13 +31,13 @@ class TaskList extends LitElement {
 
   // removes the selected task from the tasks array
   handleDeleteTask(event) {
-    const taskToDelete = event.detail;  
-    this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);  
+    const taskToDelete = event.detail;  // Get the task data from the event
+    this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);  // Filter out the deleted task
   }
 
   // Disable Shadow DOM for this component
   createRenderRoot() {
-    return this; 
+    return this; // Use Light DOM instead of Shadow DOM
   }
 
   // defiens the structure of the TaskList mappping over each task in the tasks array and rendering a TaskItem for each, listens for complete/delete

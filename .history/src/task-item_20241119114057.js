@@ -40,20 +40,20 @@ class TaskItem extends LitElement {
   // Render the task item layout using Lit's HTML template, with completion class toggle and deletion
   render() {
     return html`
-      <div class="task-item d-flex align-items-center">
-
+      <div class="task-item d-flex justify-content-between align-items-center">
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
-        <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
+
+        <!-- Use Bootstrap's utilities for conditional styles -->
+        <span class="${this.task.completed ? 'text-muted text-decoration-line-through p-2' : ''} px-5">
           ${this.task.text} 
         </span>
 
         <button 
-          class="btn btn-danger btn-sm ms-auto" 
+          class="btn btn-danger btn-sm" 
           @click="${this.deleteTask}">
           ✘  
         </button>
@@ -64,3 +64,4 @@ class TaskItem extends LitElement {
 
 // Register the custom element with the browser so it can be used as <task-item>
 customElements.define('task-item', TaskItem);
+

@@ -42,16 +42,19 @@ class TaskItem extends LitElement {
     return html`
       <div class="task-item d-flex align-items-center">
 
+        <!-- Complete Button (left) -->
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
+
+        <!-- Task Text -->
         <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
           ${this.task.text} 
         </span>
 
+        <!-- Delete Button (right) -->
         <button 
           class="btn btn-danger btn-sm ms-auto" 
           @click="${this.deleteTask}">

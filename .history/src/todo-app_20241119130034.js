@@ -1,6 +1,6 @@
 //This is the main component where the user interacts with the app. It allows the user to enter a new task, and it manages the list of tasks
 
-import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1'
+import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
 import './task-list.js';
 
 // Defines the TodoApp component
@@ -15,16 +15,10 @@ class TodoApp extends LitElement {
   // Constructor sets the properties when the component is created, both set to empty by default
   constructor() {
     super();
-    this.newTaskText = '';
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.newTaskText = '';   
+    this.tasks = [];         
   }
-  
-  //adds tasks to a local JSON file allowing them to persist after refreshing the page
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
-  
+
   // Handles changes in the input field, updating the newTaskText property when user enters a task
   handleInputChange(event) {
     this.newTaskText = event.target.value;  // Set newTaskText to the value entered by the user
@@ -38,29 +32,39 @@ class TodoApp extends LitElement {
     }
   }
 
+  // Handle "Enter" key press to trigger addTask
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.addTask();  // Trigger addTask when "Enter" key is pressed
+    }
+  }
+
   // Disable Shadow DOM for this component
   createRenderRoot() {
     return this; // Use Light DOM instead of Shadow DOM
   }
 
-  // Renders the component using string literals, setting the layout, listening for inpout, adding add/delete buttons
+  // Renders the component using string literals, setting the layout, listening for input, adding add/delete buttons
   render() {
     return html`
       <div class="card shadow-sm p-4">
         <h1 class="text-center mb-4">To-Do List</h1>
 
-        <!-- Input field for new task -->
+        <!-- Input field for new task (keep it as is, just add keydown listener for "Enter" key) -->
         <div class="mb-3">
           <input
             type="text"
             .value="${this.newTaskText}"  
             @input="${this.handleInputChange}" 
+            @keydown="${this.handleKeyPress}"  <!-- Listen for the Enter key -->
             class="form-control"
             placeholder="What needs to be done?" />
         </div>
         
+        <!-- Add Task button -->
         <button @click="${this.addTask}" class="btn btn-primary w-100 mb-4">Add Task</button>
 
+        <!-- Task List -->
         <task-list .tasks="${this.tasks}"></task-list>
       </div>
     `;
@@ -69,4 +73,3 @@ class TodoApp extends LitElement {
 
 // Register the TodoApp custom element
 customElements.define('todo-app', TodoApp);
-

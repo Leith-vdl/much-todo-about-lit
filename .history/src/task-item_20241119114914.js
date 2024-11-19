@@ -15,6 +15,18 @@ class TaskItem extends LitElement {
     this.task = { text: '', completed: false }; 
   }
 
+  //adds a task when return key pressed, then clears input field
+  addTask(event) {
+    if (keyCode === 13 && event.target.value.trim() !== '') {
+      const newTask = {
+        text: event.target.value,
+        completed: false
+      };
+      this.tasks = [...this.tasks, newTask];
+      event.target.value = '';
+    }
+  }
+
   // Deletes tasks and updates the list, allowing travel through the DOM (composed) for parents to listen (bubble)
   deleteTask() {
     this.dispatchEvent(new CustomEvent('delete-task', { 
@@ -41,17 +53,19 @@ class TaskItem extends LitElement {
   render() {
     return html`
       <div class="task-item d-flex align-items-center">
-
+        <!-- Complete Task button (Left-aligned) -->
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
+
+        <!-- Task text (Center, takes up available space) -->
         <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
           ${this.task.text} 
         </span>
 
+        <!-- Delete Task button (Right-aligned) -->
         <button 
           class="btn btn-danger btn-sm ms-auto" 
           @click="${this.deleteTask}">

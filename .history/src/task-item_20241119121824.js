@@ -40,18 +40,28 @@ class TaskItem extends LitElement {
   // Render the task item layout using Lit's HTML template, with completion class toggle and deletion
   render() {
     return html`
-      <div class="task-item d-flex align-items-center">
 
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+      </div>
+      <input type="text" class="form-control ${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    </div>
+
+      <div class="task-item d-flex align-items-center">
+        <!-- Complete Task button (Left-aligned) -->
         <button 
-          class="btn btn-primary btn-sm" 
+          class="btn btn-outline-secondary btn-sm" type="button" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
+
+        <!-- Task text (Center, takes up available space)
         <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
           ${this.task.text} 
-        </span>
+        </span> -->
 
+        <!-- Delete Task button (Right-aligned) -->
         <button 
           class="btn btn-danger btn-sm ms-auto" 
           @click="${this.deleteTask}">

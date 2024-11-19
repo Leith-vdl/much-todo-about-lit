@@ -17,27 +17,27 @@ class TaskList extends LitElement {
     this.tasks = [];
   }
 
-  // Adds a task when the Enter key is pressed, then clears the input field
+  //adds a task when return key pressed, then clears input field
   addTask(event) {
-    if (KeyboardEvent === 'Enter' && event.target.value.trim() !== '') {
+    if (keyCode === 13 && event.target.value.trim() !== '') {
       const newTask = {
         text: event.target.value,
         completed: false
       };
-      this.tasks = [...this.tasks, newTask]; 
-      event.target.value = ''; 
+      this.tasks = [...this.tasks, newTask];
+      event.target.value = '';
     }
   }
 
   // removes the selected task from the tasks array
   handleDeleteTask(event) {
-    const taskToDelete = event.detail;  
-    this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);  
+    const taskToDelete = event.detail;  // Get the task data from the event
+    this.tasks = this.tasks.filter(task => task.text !== taskToDelete.text);  // Filter out the deleted task
   }
 
   // Disable Shadow DOM for this component
   createRenderRoot() {
-    return this; 
+    return this; // Use Light DOM instead of Shadow DOM
   }
 
   // defiens the structure of the TaskList mappping over each task in the tasks array and rendering a TaskItem for each, listens for complete/delete

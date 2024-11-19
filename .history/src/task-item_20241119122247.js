@@ -41,17 +41,19 @@ class TaskItem extends LitElement {
   render() {
     return html`
       <div class="task-item d-flex align-items-center">
-
+        <!-- Complete Task button (Left-aligned) -->
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
+
+        <!-- Task text (Center, takes up available space) -->
         <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
           ${this.task.text} 
         </span>
 
+        <!-- Delete Task button (Right-aligned) -->
         <button 
           class="btn btn-danger btn-sm ms-auto" 
           @click="${this.deleteTask}">

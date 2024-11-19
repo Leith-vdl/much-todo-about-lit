@@ -47,7 +47,7 @@ class TaskItem extends LitElement {
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
+
         <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
           ${this.task.text} 
         </span>

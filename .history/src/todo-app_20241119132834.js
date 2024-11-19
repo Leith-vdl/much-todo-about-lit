@@ -25,6 +25,7 @@ class TodoApp extends LitElement {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
   
+
   // Handles changes in the input field, updating the newTaskText property when user enters a task
   handleInputChange(event) {
     this.newTaskText = event.target.value;  // Set newTaskText to the value entered by the user

@@ -1,6 +1,6 @@
 //This represents an individual task. It displays the task text and provides functionality to toggle its completion or delete it.
 
-import { html, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
+import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
 
 class TaskItem extends LitElement {
 
@@ -15,7 +15,7 @@ class TaskItem extends LitElement {
     this.task = { text: '', completed: false }; 
   }
 
-  // Deletes tasks and updates the list, allowing travel through the DOM (composed) for parents to listen (bubble)
+  // deletes tasks and updates the list, allowing travel through the DOM (composed) for parents to listen (bubble)
   deleteTask() {
     this.dispatchEvent(new CustomEvent('delete-task', { 
       detail: this.task,      
@@ -24,7 +24,7 @@ class TaskItem extends LitElement {
     }));
   }
 
-  // Toggles the completion status of the task (completed or not)
+  // toggles the completion status of the task (completed or not)
   toggleCompleteTask() {
     // Toggle the completed state of the task
     this.task.completed = !this.task.completed;
@@ -40,26 +40,36 @@ class TaskItem extends LitElement {
   // Render the task item layout using Lit's HTML template, with completion class toggle and deletion
   render() {
     return html`
-      <div class="task-item d-flex align-items-center">
+      <div class="task-item d-flex justify-content-between align-items-center">
 
         <button 
           class="btn btn-primary btn-sm" 
           @click="${this.toggleCompleteTask}">
           ${this.task.completed ? '↩️' : '✅'}  
         </button>
-        
-        <span class="${this.task.completed ? 'text-muted text-decoration-line-through' : ''} flex-grow-1 px-3">
+
+        <!-- adds the completed class to tasks when button is clicked -->
+        <span class="${this.task.completed ? 'completed' : ''} px-5">
           ${this.task.text} 
         </span>
 
         <button 
-          class="btn btn-danger btn-sm ms-auto" 
+          class="btn btn-danger btn-sm" 
           @click="${this.deleteTask}">
           ✘  
         </button>
       </div>
     `;
   }
+
+  // Define styles for the component, adding line-through tocompleted tasks
+  static styles = css`
+    .completed {
+      text-decoration: line-through;  
+      color: #6c757d;  
+      padding: 10px;
+    }
+  `;
 }
 
 // Register the custom element with the browser so it can be used as <task-item>

@@ -15,16 +15,10 @@ class TodoApp extends LitElement {
   // Constructor sets the properties when the component is created, both set to empty by default
   constructor() {
     super();
-    this.newTaskText = '';
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.newTaskText = '';   
+    this.tasks = [];         
   }
-  
-  //adds tasks to a local JSON file allowing them to persist after refreshing the page
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
-  
+
   // Handles changes in the input field, updating the newTaskText property when user enters a task
   handleInputChange(event) {
     this.newTaskText = event.target.value;  // Set newTaskText to the value entered by the user
