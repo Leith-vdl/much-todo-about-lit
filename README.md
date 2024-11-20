@@ -8,9 +8,9 @@ This app was built as a means to strengthen my knowledge of Lit, and web compone
 <br>
 <b>Tech Stack:</b>
 <br>
--Frontend: HTML, Liquid, Bootstrap, JavaScript
+-Frontend: HTML, Bootstrap, JavaScript, Lit
 <br>
--Backend: Carbon, Node.js, PDQ
+-Backend: Node.js
 <br>
 -Other: 
 <br>
