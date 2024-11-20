@@ -5,37 +5,27 @@ import './task-item.js';
 import { tasksService } from './tasksService.js';
 
 class TaskList extends LitElement {
-  // holds an array of task objects
   static properties = {
     tasks: { type: Array },
   };
 
-  // creates empty tasks array
   constructor() {
     super();
     this.tasks = [];
   }
 
-  // calls tasksService to update the completion status of the task of toggled task (held in event.detail) then updates state using getTasks
   handleToggleComplete(event) {
     const task = event.detail;
-    tasksService.toggleTaskCompletion(task); 
-    this.tasks = tasksService.getTasks(); 
+    tasksService.toggleTaskCompletion(task); // Use the service to toggle completion
+    this.tasks = tasksService.getTasks(); // Update the tasks after toggling
   }
 
-  // calls tasksService to remove the task from the list (held in event.detail) then updates state using getTasks
   handleDeleteTask(event) {
     const taskToDelete = event.detail;
-    tasksService.deleteTask(taskToDelete); 
-    this.tasks = tasksService.getTasks(); 
+    tasksService.deleteTask(taskToDelete); // Use the service to delete the task
+    this.tasks = tasksService.getTasks(); // Update the tasks after deletion
   }
 
-  // renders using light DOM to allow Bootstrap to run
-  createRenderRoot() {
-    return this;
-  }
-
-  // defines the HTML structure of the task list array using string literals
   render() {
     return html`
       <ul class="list-group">

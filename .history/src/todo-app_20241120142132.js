@@ -4,7 +4,7 @@ import { html, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
 import './task-list.js';
 import { tasksService } from './tasksService.js';
 
-// defines two properties for this component (string for tasks and array for task list) 
+// sets the properties of the task (string) and task list (array)
 class TodoApp extends LitElement {
   static properties = {
     newTaskText: { type: String }, 
@@ -18,18 +18,18 @@ class TodoApp extends LitElement {
     this.tasks = tasksService.getTasks();  
   }
 
-  // called whenever the components properties change, and saves changes to local stroage
+  //saves the tasks whenever a change is made
   updated(changedProperties) {
     super.updated(changedProperties);
     tasksService.saveTasks();          
   }
 
-  // listens for input and updates newTaskText with the text entered in the input field
+  // updates newTaskText with the text entered in the input field
   handleInputChange(event) {
     this.newTaskText = event.target.value;
   }
 
-  // when 'Add Task' is clicked adds new task to the array then clears the input field, then refreshes task list 
+  // adds a task to the array, then clears the inpur field and updates the tasks array
   addTask() {
     tasksService.addTask(this.newTaskText);  
     this.newTaskText = '';                       

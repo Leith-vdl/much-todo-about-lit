@@ -14,7 +14,6 @@ class TaskItem extends LitElement {
     this.task = { text: '', completed: false };
   }
 
-  // handles the deletion of a task when the user clicks "✘", with bubbles to allow for parents interact, composed allowing passage through shadow DOM
   deleteTask() {
     this.dispatchEvent(
       new CustomEvent('delete-task', {
@@ -25,7 +24,6 @@ class TaskItem extends LitElement {
     );
   }
 
-  // handles toggling the completion state of a task when user clicks "✅" or "↩️", bubbles to listening parent which updates state
   toggleCompleteTask() {
     this.dispatchEvent(
       new CustomEvent('toggle-complete', {

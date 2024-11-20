@@ -3,18 +3,15 @@
 import { html, LitElement } from 'https://cdn.skypack.dev/lit@2.6.1';
 
 class TaskItem extends LitElement {
-  // task holds the properties of individual tasks (string and bool) as an object
   static properties = {
     task: { type: Object },
   };
 
-  // initialises the item, setting properties to empty by default
   constructor() {
     super();
     this.task = { text: '', completed: false };
   }
 
-  // handles the deletion of a task when the user clicks "✘", with bubbles to allow for parents interact, composed allowing passage through shadow DOM
   deleteTask() {
     this.dispatchEvent(
       new CustomEvent('delete-task', {
@@ -25,7 +22,6 @@ class TaskItem extends LitElement {
     );
   }
 
-  // handles toggling the completion state of a task when user clicks "✅" or "↩️", bubbles to listening parent which updates state
   toggleCompleteTask() {
     this.dispatchEvent(
       new CustomEvent('toggle-complete', {
@@ -36,13 +32,10 @@ class TaskItem extends LitElement {
     );
   }
 
-  
-  // renders using light DOM to allow Bootstrap to run
   createRenderRoot() {
     return this;
   }
 
-  //defines the HTML structure of a single task item
   render() {
     return html`
       <div class="task-item d-flex align-items-center">

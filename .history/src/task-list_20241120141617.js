@@ -5,25 +5,23 @@ import './task-item.js';
 import { tasksService } from './tasksService.js';
 
 class TaskList extends LitElement {
-  // holds an array of task objects
   static properties = {
     tasks: { type: Array },
   };
 
-  // creates empty tasks array
   constructor() {
     super();
     this.tasks = [];
   }
 
-  // calls tasksService to update the completion status of the task of toggled task (held in event.detail) then updates state using getTasks
+  // calls toggleTaskCompletion from tasksService and updates the state
   handleToggleComplete(event) {
     const task = event.detail;
     tasksService.toggleTaskCompletion(task); 
     this.tasks = tasksService.getTasks(); 
   }
 
-  // calls tasksService to remove the task from the list (held in event.detail) then updates state using getTasks
+  // // calls deleteTask from tasksService to handle deletion of tasks, then updates array
   handleDeleteTask(event) {
     const taskToDelete = event.detail;
     tasksService.deleteTask(taskToDelete); 
@@ -35,7 +33,7 @@ class TaskList extends LitElement {
     return this;
   }
 
-  // defines the HTML structure of the task list array using string literals
+  // renders the content onto the page using HTML string literals
   render() {
     return html`
       <ul class="list-group">

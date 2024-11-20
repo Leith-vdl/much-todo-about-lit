@@ -14,27 +14,25 @@ class TaskItem extends LitElement {
     this.task = { text: '', completed: false };
   }
 
-  // handles the deletion of a task when the user clicks "✘", with bubbles to allow for parents interact, composed allowing passage through shadow DOM
-  deleteTask() {
-    this.dispatchEvent(
-      new CustomEvent('delete-task', {
-        detail: this.task,
-        bubbles: true,
-        composed: true,
-      })
-    );
-  }
+  // deleteTask() {
+  //   this.dispatchEvent(
+  //     new CustomEvent('delete-task', {
+  //       detail: this.task,
+  //       bubbles: true,
+  //       composed: true,
+  //     })
+  //   );
+  // }
 
-  // handles toggling the completion state of a task when user clicks "✅" or "↩️", bubbles to listening parent which updates state
-  toggleCompleteTask() {
-    this.dispatchEvent(
-      new CustomEvent('toggle-complete', {
-        detail: this.task,
-        bubbles: true,
-        composed: true,
-      })
-    );
-  }
+  // toggleCompleteTask() {
+  //   this.dispatchEvent(
+  //     new CustomEvent('toggle-complete', {
+  //       detail: this.task,
+  //       bubbles: true,
+  //       composed: true,
+  //     })
+  //   );
+  // }
 
   
   // renders using light DOM to allow Bootstrap to run
