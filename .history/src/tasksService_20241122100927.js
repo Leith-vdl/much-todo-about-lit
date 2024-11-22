@@ -18,20 +18,18 @@ class TaskService {
     }
   
     // if not whitespace, adds a new task (with properties) to the taskList array using spread (...), then updates list to local storage
-    addTask(newTaskText) {
-      if (newTaskText.trim() !== '') {
-        const newTask = { text: newTaskText, completed: false };
-        this.tasks = [...this.tasks, newTask];
-        this.saveTasks();
-      }
+    toggleTaskCompletion(task) {
+    task.completed = !task.completed;
+    this.tasks = [...this.tasks]; 
+    this.saveTasks();
     }
+
   
     // toggles completion state (bool property) of tasks, line-through if complete
     toggleTaskCompletion(task) {
       task.completed = !task.completed;
       this.saveTasks();
     }
-
   
     // handles task deletion
     deleteTask(taskToDelete) {

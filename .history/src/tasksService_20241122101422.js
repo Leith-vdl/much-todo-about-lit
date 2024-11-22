@@ -31,7 +31,6 @@ class TaskService {
       task.completed = !task.completed;
       this.saveTasks();
     }
-
   
     // handles task deletion
     deleteTask(taskToDelete) {

@@ -19,10 +19,9 @@ class TaskList extends LitElement {
   // calls tasksService to update the completion status of the task of toggled task (held in event.detail) then updates state using getTasks
   handleToggleComplete(event) {
     const task = event.detail;
-    tasksService.toggleTaskCompletion(task);
+    tasksService.toggleTaskCompletion(task); 
     this.tasks = tasksService.getTasks(); 
   }
-
 
   // calls tasksService to remove the task from the list (held in event.detail) then updates state using getTasks
   handleDeleteTask(event) {
