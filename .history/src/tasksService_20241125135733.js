@@ -27,7 +27,7 @@ class TaskService {
     }
   
     // toggles completion state (bool property) of tasks, line-through if complete
-    toggleTaskCompletion(task) {
+    toggleTaskCompletion(task) {e
       const updatedTask = { ...task, completed: !task.completed };
       const index = this.tasks.findIndex(t => t.text === task.text);
       if (index !== -1) {
